@@ -1,0 +1,30 @@
+#!/bin/sh
+# Connects Claude to Saturn's MCP server.
+#
+# The server is the Saturn app itself. Every copy of Saturn ships a bridge,
+# Contents/MacOS/saturn-mcp, that relays standard input and output to the
+# running app, opening Saturn first if it isn't running. This script finds a
+# bridge and becomes it (exec), so Saturn asks about the app that started the
+# plugin, never about a shell. Standard output is the MCP channel, so the
+# script never writes to it; it downloads, installs and changes nothing.
+
+# Becomes the bridge inside the app at $1, if that app has one.
+exec_bridge() {
+  bridge="${1%/}/Contents/MacOS/saturn-mcp"
+  if [ -x "$bridge" ]; then exec "$bridge"; fi
+}
+
+# The running copy, wherever it lives: Saturn records its own location.
+session="$HOME/Library/Application Support/MarkdownNotes/mcp/session.json"
+if [ -f "$session" ]; then
+  exec_bridge "$(/usr/bin/plutil -extract bundlePath raw -o - "$session" 2>/dev/null)"
+fi
+
+# An installed copy. Earlier versions installed as MarkdownNotes.app.
+for app in /Applications/Saturn.app "$HOME/Applications/Saturn.app" \
+           /Applications/MarkdownNotes.app "$HOME/Applications/MarkdownNotes.app"; do
+  exec_bridge "$app"
+done
+
+echo "Couldn't find the Saturn app. Install Saturn for Mac from https://www.saturnnotes.com, open it once, then reconnect." >&2
+exit 1

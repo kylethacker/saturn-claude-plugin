@@ -1,0 +1,14 @@
+{
+  "name": "saturnnotes",
+  "owner": {
+    "name": "Kyle Thacker",
+    "url": "https://www.saturnnotes.com"
+  },
+  "description": "Saturn for Claude, from the makers of Saturn.",
+  "plugins": [
+    {
+      "name": "saturn",
+      "source": "./"
+    }
+  ]
+}
