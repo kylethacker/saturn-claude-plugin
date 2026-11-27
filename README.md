@@ -6,7 +6,7 @@ Gives Claude your [Saturn](https://www.saturnnotes.com) notes. Claude can search
 
 - **Saturn for Mac** on macOS 15 or later, with Settings › Assistants › *Allow assistants to connect* turned on (the default).
 - **Claude Code** (in a terminal, an IDE or the Code tab of the Claude desktop app), or **Cowork** through the Claude desktop app. Saturn's server runs on your Mac, so Claude on the web and on your phone can't reach it.
-- Chats in the desktop app don't run plugin servers. To connect them, use Saturn › Settings › Connect an App › Claude.
+- Chats in the desktop app don't run plugin servers. To connect them, use Saturn › Settings › Assistants › Connect an App › Claude.
 
 ## Install
 
@@ -56,6 +56,6 @@ When Claude connects, Saturn's first answer explains its tools in plain words. I
 ## Help
 
 - **Saturn's tools don't appear.** Open Saturn and check Settings › Assistants, then reconnect Saturn (`/mcp` in Claude Code).
-- **Claude Code lists Saturn's tools twice.** You also connected Saturn from its Connect an App settings. Remove that copy with `claude mcp remove saturn --scope user`.
+- **Claude Code lists Saturn's tools twice.** You also connected Claude Code from Saturn › Settings › Assistants › Connect an App. Remove that copy with `claude mcp remove saturn --scope user`.
 
 Questions, problems and security reports: [help@saturnnotes.com](mailto:help@saturnnotes.com)
