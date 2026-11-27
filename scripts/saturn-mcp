@@ -3,7 +3,7 @@
 #
 # The server is the Saturn app itself. Every copy of Saturn ships a bridge,
 # Contents/MacOS/saturn-mcp, that relays standard input and output to the
-# running app, opening Saturn first if it isn't running. This script finds a
+# running app, opening Saturn when a request needs it. This script finds a
 # bridge and becomes it (exec), so Saturn asks about the app that started the
 # plugin, never about a shell. Standard output is the MCP channel, so the
 # script never writes to it; it downloads, installs and changes nothing.
@@ -15,7 +15,7 @@ exec_bridge() {
 }
 
 # The running copy, wherever it lives: Saturn records its own location.
-session="$HOME/Library/Application Support/MarkdownNotes/mcp/session.json"
+session="$HOME/Library/Application Support/Saturn/mcp/session.json"
 if [ -f "$session" ]; then
   exec_bridge "$(/usr/bin/plutil -extract bundlePath raw -o - "$session" 2>/dev/null)"
 fi

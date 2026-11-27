@@ -1,7 +1,7 @@
 {
   "name": "saturn",
   "displayName": "Saturn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Search, write and organize your Saturn notes and tasks from Claude, through the Saturn app on your Mac.",
   "author": {
     "name": "Kyle Thacker",
@@ -10,8 +10,10 @@
   "homepage": "https://www.saturnnotes.com",
   "repository": "https://github.com/kylethacker/saturn-claude-plugin",
   "license": "MIT",
-  "keywords": ["notes", "markdown", "tasks", "mac", "local-first"],
+  "keywords": ["notes", "tasks", "planning", "mac", "markdown", "local-first"],
   "icon": "./icon.png",
   "privacyPolicyUrl": "https://www.saturnnotes.com/privacy",
-  "termsOfServiceUrl": "https://www.saturnnotes.com/terms"
+  "termsOfServiceUrl": "https://www.saturnnotes.com/terms",
+  "documentationUrl": "https://github.com/kylethacker/saturn-claude-plugin#readme",
+  "supportUrl": "https://github.com/kylethacker/saturn-claude-plugin#help"
 }

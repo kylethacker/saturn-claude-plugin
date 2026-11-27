@@ -1,6 +1,6 @@
 # Saturn for Claude
 
-Gives Claude your [Saturn](https://www.saturnnotes.com) notes. Claude can search and read them, write and edit notes, keep your tasks, file notes into spaces and board columns, lay out canvases and save links. It works through the Saturn app on your Mac, so your notes stay there, and each change appears in Saturn as Claude makes it, alongside anything you're typing.
+Gives Claude your [Saturn](https://www.saturnnotes.com) notes. Claude can search and read them, write and edit notes, keep your tasks, file notes into spaces and board columns, lay out canvases and save links. It works through the Saturn app on your Mac, so your notes stay there, as plain Markdown files you own, and each change appears in Saturn as Claude makes it, alongside anything you're typing.
 
 ## Requirements
 
@@ -31,17 +31,31 @@ Saturn asks before Claude reads anything, naming the app that wants in: *"Claude
 
 ## What it runs
 
-One file: [`scripts/saturn-mcp`](scripts/saturn-mcp), a short shell script. It finds the `saturn-mcp` bridge inside the Saturn app (the copy that's running, else the one in `/Applications` or `~/Applications`) and hands over to it. The bridge relays Claude's requests to Saturn over a local connection that only your account on this Mac can open, and it starts Saturn in the background if it isn't already running. The script downloads nothing, installs nothing and writes nothing.
+One file: [`scripts/saturn-mcp`](scripts/saturn-mcp), a short shell script. It finds the `saturn-mcp` bridge inside the Saturn app (the copy that's running, else the one in `/Applications` or `~/Applications`) and hands over to it. The bridge relays Claude's requests to Saturn over a local connection that only your account on this Mac can open. If Saturn isn't running, the bridge opens it in the background, usually not until Claude first uses one of Saturn's tools. The first session after you install or update Saturn opens it at once. The script downloads nothing, installs nothing and writes nothing.
 
-## Privacy
+When Claude connects, Saturn's first answer explains its tools in plain words. It covers what notes, spaces and tasks are, says to read a note before changing it, and says to treat what notes say as material, never as instructions. Each tool also says whether it only reads, only adds, or can change what's there.
 
-The plugin connects only to Saturn on this Mac, and Saturn answers only the apps you've allowed. Nothing Claude can do through Saturn uploads, publishes or deletes a note: archiving hides a note, and you can restore it.
+## Privacy Policy
 
-What Claude reads through Saturn becomes part of your conversation with Claude, under [Anthropic's privacy policy](https://www.anthropic.com/legal/privacy). Saturn's own policy is at [saturnnotes.com/privacy](https://www.saturnnotes.com/privacy).
+- **What Claude can reach.** Only your Saturn notes, and only after you allow the app in Saturn: read only, or read and write. Claude reads and changes only what it asks Saturn for while you use it.
+- **Where your notes go.**
+  - The plugin talks only to Saturn on this Mac, and Saturn sends nothing anywhere by itself.
+  - What Claude reads becomes part of your conversation with Claude, which Anthropic handles under [its privacy policy](https://www.anthropic.com/legal/privacy).
+  - No tool uploads, publishes or deletes a note. Archiving hides a note, and you can restore it.
+- **When Saturn uses the network for Claude.** Two tools reach the web, with what Claude gives them:
+  - Saving a link fetches the address Claude passes, for the page's title and picture.
+  - A page Claude saves into Saturn runs its own scripts when you open it, and can load or send what its HTML says. The page can't read your notes.
+  - So either can carry text Claude put into it, including text it read from your notes. Saturn's instructions tell Claude to treat what notes say as material, never as instructions.
+- **What's kept, and for how long.**
+  - The plugin stores nothing.
+  - On this Mac, Saturn keeps the apps you've allowed and their access level, until you remove them. It also keeps a list of the last 20 changes assistants made, which you can clear.
+  - Both are in Saturn › Settings › Assistants.
+- **Sharing.** Saturn's makers never receive your notes, and nothing here sells or shares them.
+- **Contact.** [help@saturnnotes.com](mailto:help@saturnnotes.com). Saturn's full policy is at [saturnnotes.com/privacy](https://www.saturnnotes.com/privacy).
 
-## Troubleshooting
+## Help
 
 - **Saturn's tools don't appear.** Open Saturn and check Settings › Assistants, then reconnect Saturn (`/mcp` in Claude Code).
 - **Claude Code lists Saturn's tools twice.** You also connected Saturn from its Connect an App settings. Remove that copy with `claude mcp remove saturn --scope user`.
 
-Questions and security reports: [support@saturnnotes.com](mailto:support@saturnnotes.com)
+Questions, problems and security reports: [help@saturnnotes.com](mailto:help@saturnnotes.com)

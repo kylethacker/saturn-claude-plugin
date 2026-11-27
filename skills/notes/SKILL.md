@@ -12,4 +12,4 @@ Saturn is the user's notes app on this Mac, and the `saturn` tools reach it. Use
 
 Files in the current folder or project are not Saturn notes. Read those with the ordinary file tools.
 
-The server explains how its tools work when it connects. Follow it.
+When no `saturn` tools are available (Claude on the web or a phone, or Saturn not set up on this Mac), say that Saturn's notes are reachable only from Claude on the Mac where Saturn runs, and don't guess what the notes say.
