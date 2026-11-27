@@ -1,8 +1,10 @@
 {
   "mcpServers": {
     "saturn": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/saturn-mcp",
-      "args": []
+      "command": "sh",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/saturn-mcp"
+      ]
     }
   }
 }
